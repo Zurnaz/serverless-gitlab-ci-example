@@ -29,7 +29,8 @@ RUN \
   pip install awscli && \
   apk --purge -v del py-pip && \
   rm /var/cache/apk/*
-
+## Install cypress dep
+RUN apk -Uuv add xvfb
 ## Install Serverless
 WORKDIR /app
 RUN npm -g install serverless@1.43
