@@ -29,4 +29,5 @@ Main purpose of this was to try and setup a fairly feature complete serverless C
 
 - Restructure folders
 - Use middy middleware
-- remove unneed dependencies
+- Remove unneeded dependencies
+- Handle table names and references better
