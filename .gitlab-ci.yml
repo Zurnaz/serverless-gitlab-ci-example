@@ -88,7 +88,11 @@ deploy live:
 stop_dev:
   stage: deploy
   script:
-    - sls remove -s dev -v
+    - sls remove -s dev-${CI_COMMIT_REF_SLUG} -v
+  only:
+    - branches
+  except:
+    - master
   environment:
     name: dev
     action: stop
