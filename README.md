@@ -1,6 +1,13 @@
-# serverless gitlab ci
+# serverless gitlab ci example
 
 Example ci/cd pipeline for serverless framework based on gitlab.
+
+## Features
+
+- Unit testing
+- e2e testing against deployed APIs
+- Multiple evironments dev, staging, live
+- Branches automatically deploy a dev branch for 24 hours
 
 ## Configuring CI/CD
 
@@ -8,3 +15,7 @@ Requires environmental variables from IAM user created for deployments:
 
 - AWS_ACCESS_KEY_ID with the new user’s access key
 - AWS_SECRET_ACCESS_KEY with the new user’s access secret key
+
+## Notes
+
+Main purpose of this was to try and setup a fairly feature complete serverless CI/CD pipeline for gitlab, however, there is a lot of room for improvement.
