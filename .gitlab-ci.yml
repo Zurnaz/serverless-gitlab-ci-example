@@ -19,6 +19,7 @@ cache:
 
 install:
   stage: build
+  image: cypress/base:10.15.3
   script:
     - yarn install --frozen-lockfile
     - yarn verify
@@ -53,7 +54,7 @@ dev:
     expire_in: 4 days
 
 e2e tests dev:
-  # image: cypress/base:10.15.3
+  image: cypress/base:10.15.3
   stage: e2e tests
   script:
     - yarn install --frozen-lockfile
@@ -80,7 +81,7 @@ staging:
       - stack.json
 
 e2e tests staging:
-  # image: cypress/base:10.15.3
+  image: cypress/base:10.15.3
   stage: e2e tests
   script:
     - yarn install --frozen-lockfile
