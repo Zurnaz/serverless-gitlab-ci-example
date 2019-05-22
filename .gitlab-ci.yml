@@ -1,4 +1,4 @@
-image: comicrelief/node-sls
+image: registry.gitlab.com/zurnaz/serverless-gitlab-ci-example
 
 stages:
   - test
@@ -32,6 +32,11 @@ dev:
     - sls deploy -s dev-${CI_COMMIT_REF_SLUG} -v
   only:
     - branches
+  except:
+    - master
+  environment:
+    name: dev
+    on_stop: stop_dev
   artifacts:
     untracked: false
     paths:
@@ -45,6 +50,8 @@ e2e tests dev:
     - yarn e2e
   only:
     - branches
+  except:
+    - master
 
 deploy staging:
   stage: deploy

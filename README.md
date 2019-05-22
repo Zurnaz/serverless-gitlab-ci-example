@@ -4,12 +4,17 @@ Example ci/cd pipeline for serverless framework based on gitlab.
 
 ## Features
 
+- Linting
 - Unit testing
 - e2e testing against deployed APIs
 - Multiple evironments dev, staging, live
-- Branches automatically deploy a dev branch for 24 hours
+- Branches automatically deploy a dev branch for 24 hours that has e2e tests run against the endpoint straight away
 
 ## Configuring CI/CD
+
+You need to build the docker image if you don't want to use the default
+
+- check the registry tab in the project on gitlab for instructions
 
 Requires environmental variables from IAM user created for deployments:
 
@@ -18,4 +23,10 @@ Requires environmental variables from IAM user created for deployments:
 
 ## Notes
 
-Main purpose of this was to try and setup a fairly feature complete serverless CI/CD pipeline for gitlab, however, there is a lot of room for improvement.
+Main purpose of this was to try and setup a fairly feature complete serverless CI/CD pipeline for gitlab, however, there is still a lot of room for improvement.
+
+## TODOs
+
+- Restructure folders
+- Use middy middleware
+- remove unneed dependencies
