@@ -1,4 +1,4 @@
 module.exports = {
-  testMatch: ["**/(*.)unit.js"],
-  moduleFileExtensions: ["js", "json"]
-};
+  testMatch: ['**/(*.)unit.js'],
+  moduleFileExtensions: ['js', 'json'],
+}

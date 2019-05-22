@@ -7,15 +7,15 @@
 
 /* eslint-disable import/no-extraneous-dependencies, global-require, arrow-body-style */
 
-const parameters = require("../../stack.json");
+const parameters = require('../../stack.json')
 module.exports = (on, config) => {
-  config.defaultCommandTimeout = 10000;
-  config.baseUrl = parameters.ServiceEndpoint;
-  config.supportFile = "e2e/support/index.js";
-  config.integrationFolder = "e2e/specs";
-  config.video = false;
-  config.videosFolder = "e2e/videos";
-  config.screenshotsFolder = "e2e/screenshots";
+  config.defaultCommandTimeout = 10000
+  config.baseUrl = parameters.ServiceEndpoint
+  config.supportFile = 'e2e/support/index.js'
+  config.integrationFolder = 'e2e/specs'
+  config.video = false
+  config.videosFolder = 'e2e/videos'
+  config.screenshotsFolder = 'e2e/screenshots'
   // return config
-  return config;
-};
+  return config
+}
