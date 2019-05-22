@@ -5,7 +5,7 @@ module.exports.dynamo = new this.AWS.DynamoDB.DocumentClient()
 
 module.exports.scan = async (event, context) => {
   const params = {
-    TableName: 'TABLE_NAME',
+    TableName: process.env.DYNAMODB_TABLE_NAME,
   }
   return this.dynamo
     .scan(params)
@@ -21,7 +21,7 @@ module.exports.scan = async (event, context) => {
 
 module.exports.put = async (event, context) => {
   const params = {
-    TableName: 'TABLE_NAME',
+    TableName: process.env.DYNAMODB_TABLE_NAME,
     Item: { PK: '123', SK: 'item' },
   }
   return this.dynamo
@@ -38,7 +38,7 @@ module.exports.put = async (event, context) => {
 
 module.exports.get = async (event, context) => {
   const params = {
-    TableName: this.tableName,
+    TableName: process.env.DYNAMODB_TABLE_NAME,
     Key: {
       PK: '123',
       SK: 'item',
@@ -58,7 +58,7 @@ module.exports.get = async (event, context) => {
 
 module.exports.delete = async (event, context) => {
   const params = {
-    TableName: 'TABLE_NAME',
+    TableName: process.env.DYNAMODB_TABLE_NAME,
     Key: {
       PK: { S: '123' },
     },

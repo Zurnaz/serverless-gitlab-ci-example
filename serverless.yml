@@ -19,6 +19,8 @@ custom:
 provider:
   name: aws
   region: eu-west-2
+  environment:
+    DYNAMODB_TABLE_NAME: tableName-${self:provider.stage}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -90,7 +92,7 @@ resources:
     myDynamoTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: TABLE_NAME
+        TableName: tableName-${self:provider.stage}
         StreamSpecification:
           StreamViewType: NEW_AND_OLD_IMAGES
         AttributeDefinitions:
@@ -109,3 +111,5 @@ resources:
   Outputs:
     Region:
       Value: ${self:provider.region}
+    Stage:
+      Value: ${self:provider.stage}
