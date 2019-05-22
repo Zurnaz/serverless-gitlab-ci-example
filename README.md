@@ -31,3 +31,7 @@ Main purpose of this was to try and setup a fairly feature complete serverless C
 - Use middy middleware
 - Remove unneeded dependencies
 - Handle table names and references better
+- Look into adding a code quality scan
+- Look into adding a security scan
+- Would it be better to use a different docker image for cypress?
+- Would it be better to break down the severless file into multiple pieces by feature and combine it back together?
