@@ -53,8 +53,10 @@ e2e tests dev:
     - branches
   except:
     - master
+  dependencies:
+    - dev
 
-deploy staging:
+staging:
   stage: deploy
   script:
     - sls deploy -s staging -v
@@ -75,6 +77,8 @@ e2e tests staging:
     - yarn e2e
   only:
     - master
+  dependencies:
+    - staging
 
 deploy live:
   stage: release
