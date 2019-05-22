@@ -8,7 +8,6 @@ stages:
 
 variables:
   dev: 'dev-$CI_COMMIT_REF_SLUG'
-  CYPRESS_CACHE_FOLDER: node_modules/cypress-cache
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
@@ -45,6 +44,7 @@ dev:
     expire_in: 4 days
 
 e2e tests dev:
+  image: cypress/base:10.15.3
   stage: e2e tests
   script:
     - yarn install --frozen-lockfile
@@ -71,6 +71,7 @@ staging:
       - stack.json
 
 e2e tests staging:
+  image: cypress/base:10.15.3
   stage: e2e tests
   script:
     - yarn install --frozen-lockfile
