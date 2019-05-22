@@ -8,12 +8,13 @@ stages:
 
 variables:
   dev: 'dev-$CI_COMMIT_REF_SLUG'
+  CYPRESS_CACHE_FOLDER:  ${CI_PROJECT_DIR}/cache/Cypress
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
-
+    - cache/Cypress
 lint:
   stage: test
   script:
