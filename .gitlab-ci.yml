@@ -1,0 +1,99 @@
+image: softinstigate/serverless
+
+stages:
+  - test
+  - deploy
+  - e2e tests
+  - release
+
+variables:
+  dev: 'dev-$CI_COMMIT_REF_SLUG'
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+lint:
+  stage: test
+  script:
+    - yarn install --frozen-lockfile
+    - yarn lint
+
+unit tests:
+  stage: test
+  script:
+    - yarn install --frozen-lockfile
+    - yarn unit
+
+dev:
+  stage: deploy
+  script:
+    - sls deploy -s dev-${CI_COMMIT_REF_SLUG} -v
+  only:
+    - branches
+  artifacts:
+    untracked: false
+    paths:
+      - stack.json
+    expire_in: 4 days
+
+e2e tests dev:
+  stage: e2e tests
+  script:
+    - yarn install --frozen-lockfile
+    - yarn e2e
+  only:
+    - branches
+
+deploy staging:
+  stage: deploy
+  script:
+    - sls deploy -s staging -v
+  environment:
+    name: staging
+    on_stop: stop_staging
+  only:
+    - master
+  artifacts:
+    untracked: false
+    paths:
+      - stack.json
+
+e2e tests staging:
+  stage: e2e tests
+  script:
+    - yarn install --frozen-lockfile
+    - yarn e2e
+  only:
+    - master
+
+deploy live:
+  stage: release
+  script:
+    - sls deploy -s live -v
+  environment:
+    name: live
+  only:
+    - master
+  when: manual
+
+stop_dev:
+  stage: deploy
+  script:
+    - sls remove -s dev -v
+  environment:
+    name: staging
+    action: stop
+  when: delayed
+  start_in: 48 hour
+
+stop_staging:
+  stage: deploy
+  script:
+    - sls remove -s staging -v
+  environment:
+    name: staging
+    action: stop
+  when: delayed
+  start_in: 48 hour

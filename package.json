@@ -1,0 +1,45 @@
+{
+  "name": "serverless-gitlab-ci",
+  "version": "1.0.0",
+  "description": "Repo for deploying serverless gitlab ci",
+  "main": "index.js",
+  "author": "bogdandrema@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "lint:eslint": "eslint --fix",
+    "lint:stylelint": "stylelint --fix",
+    "lint:markdownlint": "markdownlint",
+    "lint:prettier": "prettier --write --loglevel warn",
+    "lint:all:eslint": "yarn lint:eslint --ext .js .",
+    "lint:all:markdownlint": "yarn lint:markdownlint \"docs/*.md\" \"*.md\"",
+    "lint:all:prettier": "yarn lint:prettier \"**/*.{js,json,md}\"",
+    "lint": "run-s lint:all:*",
+    "unit": "jest --config=jest.config.js",
+    "e2e": "cypress run",
+    "watch": "jest --watch"
+  },
+  "dependencies": {
+    "@anttiviljami/serverless-stack-output": "^0.3.1",
+    "aws-sdk": "^2.378.0",
+    "axios": "^0.18.0",
+    "middy": "^0.27.0",
+    "serverless-webpack": "^5.3.0",
+    "webpack": "^4.32.0"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^4.3.0",
+    "chai": "^4.2.0",
+    "cypress": "^3.3.0",
+    "eslint": "^5.12.0",
+    "eslint-config-prettier": "^3.5.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^23.6.0",
+    "markdownlint-cli": "^0.13.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "1.15.3"
+  }
+}

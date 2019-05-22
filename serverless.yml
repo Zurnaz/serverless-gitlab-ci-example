@@ -1,0 +1,111 @@
+service: models
+
+frameworkVersion: ">=1.43 <2.0.0"
+
+plugins:
+  - '@anttiviljami/serverless-stack-output'
+  - serverless-webpack
+
+package:
+  exclude:
+    - ./node_modules/**
+    - node_modules/**
+
+custom:
+  output:
+    handler: scripts/output.process
+    file: stack.json
+
+provider:
+  name: aws
+  region: eu-west-2
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:DeleteItem
+        - dynamodb:ListStreams
+      Resource:
+        Fn::GetAtt:
+          - myDynamoTable
+          - Arn
+
+functions:
+  # Feature one
+  featureOne:
+    handler: feature-one/handler.get
+    timeout: 2
+    memorySize: 128
+    events:
+      - http:
+          path: first
+          method: get
+          cors: true
+
+  # Feature two
+  put:
+    handler: feature-two/handler.put
+    timeout: 2
+    memorySize: 128
+    events:
+      - http:
+          path: item
+          method: post
+          cors: true
+
+  delete:
+    handler: feature-two/handler.delete
+    timeout: 2
+    memorySize: 128
+    events:
+      - http:
+          path: item
+          method: delete
+          cors: true
+
+  get:
+    handler: feature-two/handler.get
+    timeout: 2
+    memorySize: 128
+    events:
+      - http:
+          path: item
+          method: get
+          cors: true
+
+  scan:
+    handler: feature-two/handler.scan
+    timeout: 2
+    memorySize: 128
+    events:
+      - http:
+          path: item/scan
+          method: get
+          cors: true
+
+resources:
+  Resources:
+    myDynamoTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: TABLE_NAME
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
+        AttributeDefinitions:
+          - AttributeName: PK
+            AttributeType: S
+          - AttributeName: SK
+            AttributeType: S
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+  Outputs:
+    Region:
+      Value: ${self:provider.region}
