@@ -1,4 +1,4 @@
-image: coveming/node-sls-aws
+image: comicrelief/node-sls
 
 stages:
   - test
