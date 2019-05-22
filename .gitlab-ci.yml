@@ -1,4 +1,4 @@
-image: softinstigate/serverless
+image: coveming/node-sls-aws
 
 stages:
   - test
