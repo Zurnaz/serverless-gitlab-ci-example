@@ -1,6 +1,7 @@
 image: registry.gitlab.com/zurnaz/serverless-gitlab-ci-example
 
 stages:
+  - build
   - test
   - deploy
   - e2e tests
@@ -15,6 +16,12 @@ cache:
   paths:
     - node_modules/
     - cache/Cypress
+
+install:
+  stage: build
+  script:
+    - yarn install --frozen-lockfile
+
 lint:
   stage: test
   script:
@@ -45,7 +52,7 @@ dev:
     expire_in: 4 days
 
 e2e tests dev:
-  image: cypress/base:10.15.3
+  # image: cypress/base:10.15.3
   stage: e2e tests
   script:
     - yarn install --frozen-lockfile
@@ -72,7 +79,7 @@ staging:
       - stack.json
 
 e2e tests staging:
-  image: cypress/base:10.15.3
+  # image: cypress/base:10.15.3
   stage: e2e tests
   script:
     - yarn install --frozen-lockfile
