@@ -37,7 +37,7 @@ provider:
 functions:
   # Feature one
   featureOne:
-    handler: feature-one/handler.get
+    handler: src/feature-one/handler.get
     timeout: 2
     memorySize: 128
     events:
@@ -48,7 +48,7 @@ functions:
 
   # Feature two
   put:
-    handler: feature-two/handler.put
+    handler: src/feature-two/handler.put
     timeout: 2
     memorySize: 128
     events:
@@ -58,7 +58,7 @@ functions:
           cors: true
 
   delete:
-    handler: feature-two/handler.delete
+    handler: src/feature-two/handler.delete
     timeout: 2
     memorySize: 128
     events:
@@ -68,7 +68,7 @@ functions:
           cors: true
 
   get:
-    handler: feature-two/handler.get
+    handler: src/feature-two/handler.get
     timeout: 2
     memorySize: 128
     events:
@@ -78,7 +78,7 @@ functions:
           cors: true
 
   scan:
-    handler: feature-two/handler.scan
+    handler: src/feature-two/handler.scan
     timeout: 2
     memorySize: 128
     events:

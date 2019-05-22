@@ -20,7 +20,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['./*', 'e2e/**/*'],
+      files: ['src/**/*', 'e2e/**/*'],
       parserOptions: {
         parser: 'babel-eslint',
         sourceType: 'module',
