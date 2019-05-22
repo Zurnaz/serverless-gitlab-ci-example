@@ -9,13 +9,12 @@ stages:
 
 variables:
   dev: 'dev-$CI_COMMIT_REF_SLUG'
-  CYPRESS_CACHE_FOLDER:  ${CI_PROJECT_DIR}/cache/Cypress
+  CYPRESS_CACHE_FOLDER:  ${CI_PROJECT_DIR}/node_modules/cache-cypress
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
-    - cache/Cypress
 
 install:
   stage: build
