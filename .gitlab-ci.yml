@@ -86,7 +86,7 @@ stop_dev:
     name: staging
     action: stop
   when: delayed
-  start_in: 48 hour
+  start_in: 24 hour
 
 stop_staging:
   stage: deploy
@@ -95,5 +95,4 @@ stop_staging:
   environment:
     name: staging
     action: stop
-  when: delayed
-  start_in: 48 hour
+  when: manual
