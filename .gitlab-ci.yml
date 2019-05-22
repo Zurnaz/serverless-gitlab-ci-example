@@ -21,6 +21,7 @@ install:
   stage: build
   script:
     - yarn install --frozen-lockfile
+    - yarn verify
 
 lint:
   stage: test

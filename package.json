@@ -16,7 +16,8 @@
     "lint": "run-s lint:all:*",
     "unit": "jest --config=jest.config.js",
     "e2e": "cypress run",
-    "watch": "jest --watch"
+    "watch": "jest --watch",
+    "verify": "cypress verify"
   },
   "dependencies": {
     "@anttiviljami/serverless-stack-output": "^0.3.1",
