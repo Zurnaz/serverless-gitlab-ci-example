@@ -22,7 +22,6 @@
     "@anttiviljami/serverless-stack-output": "^0.3.1",
     "aws-sdk": "^2.378.0",
     "axios": "^0.18.0",
-    "eslint-plugin-ava": "^6.0.0",
     "middy": "^0.27.0",
     "serverless-webpack": "^5.3.0",
     "webpack": "^4.32.0"
