@@ -90,7 +90,7 @@ stop_dev:
   script:
     - sls remove -s dev -v
   environment:
-    name: staging
+    name: dev
     action: stop
   when: delayed
   start_in: 24 hour
