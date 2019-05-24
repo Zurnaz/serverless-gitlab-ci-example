@@ -21,17 +21,14 @@ Requires environmental variables from IAM user created for deployments:
 - AWS_ACCESS_KEY_ID with the new user’s access key
 - AWS_SECRET_ACCESS_KEY with the new user’s access secret key
 
+## Recommendations
+
+- Disable commiting to master and only allow changes by merging via branches
+
 ## Notes
 
 Main purpose of this was to try and setup a fairly feature complete serverless CI/CD pipeline for gitlab, however, there is still a lot of room for improvement.
 
-## TODOs
+## Contrbute
 
-- Restructure folders
-- Use middy middleware
-- Remove unneeded dependencies
-- Handle table names and references better
-- Look into adding a code quality scan
-- Look into adding a security scan
-- Would it be better to use a different docker image for cypress?
-- Would it be better to break down the severless file into multiple pieces by feature and combine it back together?
+Feel free.
