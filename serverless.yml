@@ -1,4 +1,4 @@
-service: models
+service: cicd
 
 frameworkVersion: ">=1.43 <2.0.0"
 
