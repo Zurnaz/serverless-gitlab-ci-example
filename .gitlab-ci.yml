@@ -21,7 +21,7 @@ install:
   stage: build
   image: cypress/base:10.15.3
   script:
-    - yarn install --frozen-lockfile
+    - yarn install --frozen-lockfile --production
     - yarn verify
 
 lint:
@@ -43,13 +43,19 @@ scan dependencies:
   image: fhunii/retire.js
   script:
     - cd ${CI_PROJECT_DIR}
+    - yarn install --frozen-lockfile --production
     - retire
 
 SAST:
   stage: test
   image: opensecurity/nodejsscan
   script:
-    - nodejsscan
+    - nodejsscan-cli -d ${CI_PROJECT_DIR}/src -o ${CI_PROJECT_DIR}/results.json
+  artifacts:
+    untracked: false
+    paths:
+      - results.json
+    expire_in: 4 days
 
 dev:
   stage: deploy
