@@ -21,6 +21,10 @@ Requires environmental variables from IAM user created for deployments:
 - AWS_ACCESS_KEY_ID with the new user’s access key
 - AWS_SECRET_ACCESS_KEY with the new user’s access secret key
 
+Requires environmental variable for monitoring
+
+- IOPIPE_TOKEN
+
 ## Recommendations
 
 - Disable committing to master and only allow changes by merging via branches

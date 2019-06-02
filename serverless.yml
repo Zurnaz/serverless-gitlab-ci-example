@@ -6,6 +6,9 @@ plugins:
   - '@anttiviljami/serverless-stack-output'
   - serverless-webpack
 
+environment:
+  IOPIPE_TOKEN: ${env:IOPIPE_TOKEN}
+
 package:
   exclude:
     - ./node_modules/**
