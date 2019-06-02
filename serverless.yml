@@ -23,7 +23,7 @@ provider:
   name: aws
   region: eu-west-2
   environment:
-    DYNAMODB_TABLE_NAME: tableName-${self:provider.stage}
+    DYNAMODB_TABLE_NAME: cicdtable-${self:provider.stage}
   iamRoleStatements:
     - Effect: Allow
       Action:

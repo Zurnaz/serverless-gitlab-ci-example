@@ -38,6 +38,19 @@ unit tests:
     - yarn install --frozen-lockfile
     - yarn unit
 
+scan dependencies:
+  stage: test
+  image: fhunii/retire.js
+  script:
+    - cd ${CI_PROJECT_DIR}
+    - retire
+
+SAST:
+  stage: test
+  image: opensecurity/nodejsscan
+  script:
+    - nodejsscan
+
 dev:
   stage: deploy
   script:
