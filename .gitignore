@@ -3,3 +3,4 @@ stack.json
 .serverless
 e2e/videos
 e2e/screenshots
+cache
