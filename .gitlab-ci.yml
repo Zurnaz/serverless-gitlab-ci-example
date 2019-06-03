@@ -22,7 +22,6 @@ install:
   image: cypress/base:10.15.3
   script:
     - yarn install --frozen-lockfile --production
-    - yarn verify
 
 lint:
   stage: test
@@ -79,6 +78,7 @@ e2e tests dev:
   stage: e2e tests
   script:
     - yarn install --frozen-lockfile
+    - yarn verify
     - yarn e2e
   only:
     - branches
