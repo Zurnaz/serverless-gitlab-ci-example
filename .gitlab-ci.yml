@@ -8,11 +8,14 @@ stages:
   - release
 
 variables:
-  dev: 'dev-$CI_COMMIT_REF_SLUG'
+  DEV: dev-$CI_COMMIT_REF_NAME # No curly brackets works
+  STAGING: 'staging'
+  LIVE: 'live'
+  TABLE_NAME: 'cicdtable' # prefix one of the above 3 stages
   CYPRESS_CACHE_FOLDER:  ${CI_PROJECT_DIR}/cache/Cypress
 
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
+  key: ${CI_COMMIT_REF_NAME}
   paths:
     - node_modules/
     - cache/Cypress
@@ -21,6 +24,7 @@ install:
   stage: build
   image: cypress/base:10.15.3
   script:
+    - echo ${CYPRESS_CACHE_FOLDER}
     - yarn install --frozen-lockfile --production
 
 lint:
@@ -64,8 +68,10 @@ SAST:
 
 dev:
   stage: deploy
+  variables:
+    DYNAMODB_TABLE_NAME: $TABLE_NAME-$DEV
   script:
-    - sls deploy -s dev-${CI_COMMIT_REF_SLUG} -v
+    - sls deploy -s ${DEV} -v
   only:
     - branches
   except:
@@ -95,8 +101,10 @@ e2e tests dev:
 
 staging:
   stage: deploy
+  variables:
+    DYNAMODB_TABLE_NAME: $TABLE_NAME-$STAGING
   script:
-    - sls deploy -s staging -v
+    - sls deploy -s ${STAGING}  -v
   environment:
     name: staging
     on_stop: stop_staging
@@ -120,8 +128,10 @@ e2e tests staging:
 
 deploy live:
   stage: release
+  variables:
+    DYNAMODB_TABLE_NAME: $TABLE_NAME-$LIVE
   script:
-    - sls deploy -s live -v
+    - sls deploy -s ${LIVE} -v
   environment:
     name: live
   only:
@@ -130,8 +140,10 @@ deploy live:
 
 stop_dev:
   stage: deploy
+  variables:
+    DYNAMODB_TABLE_NAME: $TABLE_NAME-$DEV
   script:
-    - sls remove -s dev-${CI_COMMIT_REF_SLUG} -v
+    - sls remove -s ${DEV} -v
   only:
     - branches
   except:
@@ -144,10 +156,10 @@ stop_dev:
 
 stop_staging:
   stage: deploy
+  variables:
+    DYNAMODB_TABLE_NAME: $TABLE_NAME-$STAGING
   script:
-    - sls remove -s staging -v
-  only:
-    - master
+    - sls remove -s ${STAGING} -v
   environment:
     name: staging
     action: stop

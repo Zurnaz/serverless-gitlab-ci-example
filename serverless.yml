@@ -23,7 +23,7 @@ provider:
   name: aws
   region: eu-west-2
   environment:
-    DYNAMODB_TABLE_NAME: cicdtable-${self:provider.stage}
+    DYNAMODB_TABLE_NAME: ${env:DYNAMODB_TABLE_NAME}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -95,7 +95,7 @@ resources:
     myDynamoTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: tableName-${self:provider.stage}
+        TableName: ${env:DYNAMODB_TABLE_NAME}
         StreamSpecification:
           StreamViewType: NEW_AND_OLD_IMAGES
         AttributeDefinitions:
