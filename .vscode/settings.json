@@ -29,6 +29,7 @@
   "jest.enableCodeLens": true,
   "javascript.format.enable": false,
   "json.format.enable": false,
+  "jest.debugMode": false,
 
   // ===
   // MARKDOWN
