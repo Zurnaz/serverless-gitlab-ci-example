@@ -41,10 +41,10 @@ scan dependencies:
   stage: test
   image: node:slim
   script:
-    - yarn global add retire.js
+    - npm install -g retire
     - cd ${CI_PROJECT_DIR}
     - yarn install --frozen-lockfile --production
-    - retire --path ${CI_PROJECT_DIR} --ignore ${CI_PROJECT_DIR}/cache,/usr
+    - retire --path ${CI_PROJECT_DIR} --ignore ${CI_PROJECT_DIR}/cache
 
 SAST:
   stage: test
