@@ -36,6 +36,8 @@ unit tests:
   script:
     - yarn install --frozen-lockfile
     - yarn unit
+  # https://stackoverflow.com/a/54200539
+  coverage: /All\sfiles.*?\s+(\d+.\d+)/
 
 scan dependencies:
   stage: test
