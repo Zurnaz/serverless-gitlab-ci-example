@@ -8,7 +8,7 @@ stages:
   - release
 
 variables:
-  DEV: dev-$CI_COMMIT_REF_NAME # No curly brackets works
+  DEV: dev
   STAGING: 'staging'
   LIVE: 'live'
   TABLE_NAME: 'cicdtable' # prefix one of the above 3 stages
@@ -24,7 +24,6 @@ install:
   stage: build
   image: cypress/base:10.15.3
   script:
-    - echo ${CYPRESS_CACHE_FOLDER}
     - yarn install --frozen-lockfile --production
 
 lint:
@@ -69,15 +68,15 @@ SAST:
 dev:
   stage: deploy
   variables:
-    DYNAMODB_TABLE_NAME: $TABLE_NAME-$DEV
+    DYNAMODB_TABLE_NAME: $TABLE_NAME-$DEV-$CI_COMMIT_REF_NAME
   script:
-    - sls deploy -s ${DEV} -v
+    - sls deploy -s ${DEV}-${CI_COMMIT_REF_NAME}  -v
   only:
     - branches
   except:
     - master
   environment:
-    name: dev
+    name: dev/$CI_COMMIT_REF_NAME
     on_stop: stop_dev
   artifacts:
     untracked: false
@@ -141,15 +140,15 @@ deploy live:
 stop_dev:
   stage: deploy
   variables:
-    DYNAMODB_TABLE_NAME: $TABLE_NAME-$DEV
+    DYNAMODB_TABLE_NAME: $TABLE_NAME-$DEV-$CI_COMMIT_REF_NAME
   script:
-    - sls remove -s ${DEV} -v
+    - sls remove -s ${DEV}-${CI_COMMIT_REF_NAME} -v
   only:
     - branches
   except:
     - master
   environment:
-    name: dev
+    name: dev/$CI_COMMIT_REF_NAME
     action: stop
   when: delayed
   start_in: 24 hour
