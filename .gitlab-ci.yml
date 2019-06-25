@@ -39,8 +39,9 @@ unit tests:
 
 scan dependencies:
   stage: test
-  image: fhunii/retire.js
+  image: node:slim
   script:
+    - yarn global add retire.js
     - cd ${CI_PROJECT_DIR}
     - yarn install --frozen-lockfile --production
     - retire --path ${CI_PROJECT_DIR} --ignore ${CI_PROJECT_DIR}/cache,/usr
