@@ -1,4 +1,8 @@
 module.exports = {
-  testMatch: ['**/(*.)unit.js'],
-  moduleFileExtensions: ['js', 'json'],
+  testEnvironment: 'node',
+  moduleFileExtensions: ['ts', 'tsx', 'js'],
+  // transform: {
+  //   '^.+\\.(ts|tsx)$': 'ts-jest',
+  // },
+  testMatch: ['**/?(*.)(unit).(ts|tsx|js)?(x)'],
 }
