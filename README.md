@@ -2,6 +2,8 @@
 
 Example CI/CD pipeline for Serverless framework based on GitLab.
 
+![coverage](https://gitlab.com/Zurnaz/serverless-gitlab-ci-example/badges/master/coverage.svg?job=coverage)
+
 ## Features
 
 - Linting
