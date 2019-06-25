@@ -47,11 +47,12 @@ scan dependencies:
 
 SAST:
   stage: test
-  image: opensecurity/nodejsscan
+  image: python:3.7-stretch
   script:
-    - python -m venv venv
+    - python3 -m venv venv
     - source venv/bin/activate
-    - nodejsscan-cli -d ${CI_PROJECT_DIR}/src -o ${CI_PROJECT_DIR}/results.json
+    - pip install nodejsscan
+    - nodejsscan-cli -d ${CI_PROJECT_DIR}/src -o ${CI_PROJECT_DIR}/nodejsscan-results.json
   artifacts:
     untracked: false
     paths:
