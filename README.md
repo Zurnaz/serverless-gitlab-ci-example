@@ -23,7 +23,7 @@ Requires environmental variables from IAM user created for deployments:
 - AWS_ACCESS_KEY_ID with the new user’s access key
 - AWS_SECRET_ACCESS_KEY with the new user’s access secret key
 
-Requires environmental variable for monitoring
+Requires environmental variable for monitoring (Other solutions possible as they use a similar method of being configured in the serverless.yml file)
 
 - IOPIPE_TOKEN
 
