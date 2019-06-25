@@ -35,9 +35,9 @@ unit tests:
   image: cypress/base:10.15.3
   script:
     - yarn install --frozen-lockfile
-    - yarn unit
-  # https://stackoverflow.com/a/54200539
-  coverage: /All\sfiles.*?\s+(\d+.\d+)/
+    - yarn ci
+  # https://gitlab.com/snippets/1689389
+  coverage: '/^All files\s+\|\s+\d+\.*\d*\s+\|\s*(\d+\.*\d*)/'
 
 scan dependencies:
   stage: test
