@@ -146,6 +146,8 @@ stop_staging:
   stage: deploy
   script:
     - sls remove -s staging -v
+  only:
+    - master
   environment:
     name: staging
     action: stop
