@@ -43,7 +43,7 @@ scan dependencies:
   script:
     - cd ${CI_PROJECT_DIR}
     - yarn install --frozen-lockfile --production
-    - retire
+    - retire --ignore cache
 
 SAST:
   stage: test
