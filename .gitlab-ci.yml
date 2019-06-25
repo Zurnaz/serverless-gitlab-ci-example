@@ -49,7 +49,7 @@ SAST:
   stage: test
   image: opensecurity/nodejsscan
   script:
-    - virtualenv venv -p python3
+    - python -m venv venv
     - source venv/bin/activate
     - nodejsscan-cli -d ${CI_PROJECT_DIR}/src -o ${CI_PROJECT_DIR}/results.json
   artifacts:
