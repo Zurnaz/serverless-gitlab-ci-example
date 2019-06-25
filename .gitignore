@@ -5,3 +5,5 @@ e2e/videos
 e2e/screenshots
 cache
 coverage
+venv
+nodejsscan-results.json
