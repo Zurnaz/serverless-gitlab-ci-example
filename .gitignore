@@ -4,3 +4,4 @@ stack.json
 e2e/videos
 e2e/screenshots
 cache
+coverage

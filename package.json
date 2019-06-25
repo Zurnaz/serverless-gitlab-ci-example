@@ -15,6 +15,7 @@
     "lint:all:prettier": "yarn lint:prettier \"**/*.{js,json,md}\"",
     "lint": "run-s lint:all:*",
     "unit": "jest --config=jest.config.js",
+    "ci": "jest --ci --colors --coverage",
     "e2e": "cypress run",
     "watch": "jest --watch",
     "verify": "cypress verify"
