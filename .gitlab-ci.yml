@@ -52,7 +52,7 @@ SAST:
     - python3 -m venv venv
     - source venv/bin/activate
     - pip install nodejsscan
-    - nodejsscan-cli -d ${CI_PROJECT_DIR}/src -o ${CI_PROJECT_DIR}/nodejsscan-results.json
+    - nodejsscan -d ${CI_PROJECT_DIR}/src -o ${CI_PROJECT_DIR}/nodejsscan-results.json
   artifacts:
     untracked: false
     paths:
