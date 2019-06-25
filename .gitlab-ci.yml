@@ -43,12 +43,14 @@ scan dependencies:
   script:
     - cd ${CI_PROJECT_DIR}
     - yarn install --frozen-lockfile --production
-    - retire --ignore cache
+    - retire --path ${CI_PROJECT_DIR} --ignore cache
 
 SAST:
   stage: test
   image: opensecurity/nodejsscan
   script:
+    - virtualenv venv -p python3
+    - source venv/bin/activate
     - nodejsscan-cli -d ${CI_PROJECT_DIR}/src -o ${CI_PROJECT_DIR}/results.json
   artifacts:
     untracked: false
