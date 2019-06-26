@@ -24,10 +24,7 @@
     "@anttiviljami/serverless-stack-output": "0.3.1",
     "@iopipe/iopipe": "^1.14.0",
     "aws-sdk": "2.466.0",
-    "axios": "0.19.0",
-    "middy": "0.27.0",
-    "serverless-webpack": "5.3.0",
-    "webpack": "4.32.2"
+    "middy": "0.27.0"
   },
   "devDependencies": {
     "aws-sdk-mock": "4.4.0",
@@ -48,6 +45,9 @@
     "markdownlint-cli": "0.16.0",
     "npm-run-all": "4.1.5",
     "prettier": "1.17.1",
-    "serverless-plugin-iopipe": "^1.6.2"
+    "serverless-plugin-iopipe": "^1.6.2",
+    "serverless-domain-manager": "^3.2.6",
+    "serverless-webpack": "5.3.0",
+    "webpack": "4.32.2"
   }
 }

@@ -5,6 +5,7 @@ frameworkVersion: ">=1.43 <2.0.0"
 plugins:
   - '@anttiviljami/serverless-stack-output'
   - serverless-plugin-iopipe
+  - serverless-domain-manager
   - serverless-webpack
 
 package:
@@ -26,6 +27,13 @@ custom:
     excludeFiles: '**/*.unit.js'
     includeModules:
       packagePath: './package.json'
+  customDomain:
+    domainName: ${self:provider.stage}.bogdandrema.com
+    # stage: ci # defaults to provider.stage and if nothing set 'dev'
+    basePath: api
+    certificateName: '*.bogdandrema.com'
+    createRoute53Record: true
+    endpointType: 'regional'
 
 provider:
   name: aws
