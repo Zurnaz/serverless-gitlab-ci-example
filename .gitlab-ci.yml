@@ -5,6 +5,7 @@ stages:
   - test
   - deploy
   - e2e tests
+  - cleanup
   - release
 
 variables:
@@ -138,7 +139,7 @@ deploy live:
   when: manual
 
 stop_dev:
-  stage: deploy
+  stage: cleanup
   variables:
     DYNAMODB_TABLE_NAME: $TABLE_NAME-$DEV-$CI_COMMIT_REF_NAME
   script:
@@ -151,6 +152,7 @@ stop_dev:
     name: dev/$CI_COMMIT_REF_NAME
     action: stop
   when: manual
+  allow_failure: false
 
 stop_staging:
   stage: deploy
