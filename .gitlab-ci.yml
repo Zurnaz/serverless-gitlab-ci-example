@@ -150,8 +150,7 @@ stop_dev:
   environment:
     name: dev/$CI_COMMIT_REF_NAME
     action: stop
-  when: delayed
-  start_in: 24 hour
+  when: manual
 
 stop_staging:
   stage: deploy
@@ -159,6 +158,8 @@ stop_staging:
     DYNAMODB_TABLE_NAME: $TABLE_NAME-$STAGING
   script:
     - sls remove -s ${STAGING} -v
+  only:
+    - master
   environment:
     name: staging
     action: stop

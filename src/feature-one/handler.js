@@ -1,4 +1,5 @@
 module.exports.AWS = require('aws-sdk')
+// module.exports = require('@iopipe/iopipe')
 const middy = require('middy')
 const { validator, jsonBodyParser } = require('middy/middlewares')
 
