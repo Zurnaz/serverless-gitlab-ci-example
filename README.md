@@ -12,7 +12,8 @@ Example CI/CD pipeline for Serverless framework based on GitLab.
 - Unit testing
 - e2e testing against deployed APIs
 - Multiple environment dev, staging, live
-- Branches automatically deploy a dev branch for 24 hours that has e2e tests run against the endpoint straight away
+- Dev environments deployed per branch
+- Destroy old environments via the Operations > Environments
 - Security dependency scanning
 - Static application security testing
 - Test coverage metrics

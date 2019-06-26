@@ -4,24 +4,33 @@ frameworkVersion: ">=1.43 <2.0.0"
 
 plugins:
   - '@anttiviljami/serverless-stack-output'
+  - serverless-plugin-iopipe
   - serverless-webpack
-
-environment:
-  IOPIPE_TOKEN: ${env:IOPIPE_TOKEN}
 
 package:
   exclude:
     - ./node_modules/**
     - node_modules/**
 
+environment:
+  IOPIPE_TOKEN: ${env:IOPIPE_TOKEN}
+
 custom:
   output:
     handler: scripts/output.process
     file: stack.json
+  webpack:
+    packager: 'yarn'
+    webpackConfig: 'webpack.config.js'
+    keepOutputDirectory: true
+    excludeFiles: '**/*.unit.js'
+    includeModules:
+      packagePath: './package.json'
 
 provider:
   name: aws
   region: eu-west-2
+  runtime: nodejs10.x
   environment:
     DYNAMODB_TABLE_NAME: ${env:DYNAMODB_TABLE_NAME}
   iamRoleStatements:
@@ -42,7 +51,7 @@ functions:
   featureOne:
     handler: src/feature-one/handler.get
     timeout: 2
-    memorySize: 128
+    memorySize: 256
     events:
       - http:
           path: first
@@ -53,7 +62,7 @@ functions:
   put:
     handler: src/feature-two/handler.put
     timeout: 2
-    memorySize: 128
+    memorySize: 256
     events:
       - http:
           path: item
@@ -63,7 +72,7 @@ functions:
   delete:
     handler: src/feature-two/handler.delete
     timeout: 2
-    memorySize: 128
+    memorySize: 256
     events:
       - http:
           path: item
@@ -73,7 +82,7 @@ functions:
   get:
     handler: src/feature-two/handler.get
     timeout: 2
-    memorySize: 128
+    memorySize: 256
     events:
       - http:
           path: item
@@ -83,7 +92,7 @@ functions:
   scan:
     handler: src/feature-two/handler.scan
     timeout: 2
-    memorySize: 128
+    memorySize: 256
     events:
       - http:
           path: item/scan
