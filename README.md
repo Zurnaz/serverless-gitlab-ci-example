@@ -41,23 +41,70 @@ Requires environmental variable for monitoring (Other solutions possible as they
 
 ## Dev
 
-Install
+### Setup
+
+Prereq:
+
+You need serverless installed. Technicalaly you might not need it configured if you don't plan to deploy from your machine.
+
+```bash
+yarn global add serverless
+```
+
+Install:
 
 ```bash
 yarn install
 ```
 
-Run unit tests
+Run unit tests:
 
 ```bash
 yarn unit
 ```
 
-Run linting and auto correct errors
+Run linting and auto correct errors:
 
 ```bash
 yarn lint
 ```
+
+### Usage/Useful commands for dev
+
+Deploy to the environment at the stage dev:
+
+```bash
+sls deploy -s dev
+```
+
+Shutdown the environment at the stage dev
+
+```bash
+sls remove -s dev
+```
+
+Build a webpack complied version into the dist folder but do nothing with it, useful for debugging webpack issues and checking builds are correct:
+
+```bash
+sls webpack -out dist
+```
+
+Get cloudwatch logs via command line for a specific function:
+
+```bash
+sls logs -f featureOne -s dev
+```
+
+### Notes on environmental variables
+
+If you want to run builds locally to test you need to configure environmental variables for DYNAMODB_TABLE_NAME and IOPIPE_TOKEN
+
+```bash
+export DYNAMODB_TABLE_NAME=AnyTableName
+export IOPIPE_TOKEN=DoesNotHaveToBeValidUnlessDeploying
+```
+
+Note: On the todo list to improve handling of configuration variables
 
 ## Notes
 
