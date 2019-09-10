@@ -76,6 +76,12 @@ Run linting and auto correct errors:
 yarn lint
 ```
 
+Version bump
+
+```bash
+yarn upgrade --latest
+```
+
 ### Usage/Useful commands for dev
 
 Deploy to the environment at the stage dev:
