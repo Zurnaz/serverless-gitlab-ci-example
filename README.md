@@ -84,6 +84,12 @@ yarn upgrade --latest
 
 ### Usage/Useful commands for dev
 
+Dry run of a deploy, useful for finding errors:
+
+```bash
+sls deploy -s dev -v --noDeploy
+```
+
 Deploy to the environment at the stage dev:
 
 ```bash
