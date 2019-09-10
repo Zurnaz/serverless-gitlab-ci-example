@@ -45,7 +45,14 @@ Requires environmental variable for monitoring (Other solutions possible as they
 
 Prereq:
 
-You need serverless installed. Technicalaly you might not need it configured if you don't plan to deploy from your machine.
+Make sure you have these two installed before you start.
+
+```bash
+nodejs
+yarn
+```
+
+You also needserverless installed.
 
 ```bash
 yarn global add serverless
