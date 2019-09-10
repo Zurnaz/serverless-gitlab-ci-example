@@ -3,29 +3,37 @@ service: cicd
 frameworkVersion: ">=1.43 <2.0.0"
 
 plugins:
-  - '@anttiviljami/serverless-stack-output'
-  - serverless-plugin-iopipe
+  - "@anttiviljami/serverless-stack-output"
+  - serverless-domain-manager
   - serverless-webpack
+  - serverless-iopipe-layers
 
 package:
   exclude:
     - ./node_modules/**
     - node_modules/**
 
-environment:
-  IOPIPE_TOKEN: ${env:IOPIPE_TOKEN}
-
 custom:
+  iopipe:
+    token: ${env:IOPIPE_TOKEN}
   output:
     handler: scripts/output.process
     file: stack.json
   webpack:
-    packager: 'yarn'
-    webpackConfig: 'webpack.config.js'
+    packager: "yarn"
+    webpackConfig: "webpack.config.js"
     keepOutputDirectory: true
-    excludeFiles: '**/*.unit.js'
+    excludeFiles: "**/*.unit.js"
     includeModules:
-      packagePath: './package.json'
+      packagePath: "./package.json"
+  customDomain:
+    domainName: ${self:provider.stage}.bogdandrema.com
+    # stage: ci # defaults to provider.stage and if nothing set 'dev'
+    basePath: api
+    certificateName: "*.bogdandrema.com"
+    createRoute53Record: true
+    endpointType: "regional"
+    enabled: false # Disabling for now
 
 provider:
   name: aws
