@@ -19,12 +19,12 @@
     "e2e": "cypress run",
     "watch": "jest --watch",
     "verify": "cypress verify",
-    "build": "LOCAL_PLUGIN=true SLS_DEBUG=* sls package",
+    "build": "LOCAL_PLUGIN=true NODE_ENV='development' SLS_DEBUG=* sls package",
     "deploy": "LOCAL_PLUGIN=true SLS_DEBUG=* sls deploy -s dev"
   },
   "dependencies": {
     "@anttiviljami/serverless-stack-output": "0.3.1",
-    "aws-sdk": "2.526.0",
+    "aws-sdk": "2.527.0",
     "middy": "0.29.0"
   },
   "devDependencies": {
