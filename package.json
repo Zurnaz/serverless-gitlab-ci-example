@@ -18,11 +18,12 @@
     "ci": "jest --ci --coverage",
     "e2e": "cypress run",
     "watch": "jest --watch",
-    "verify": "cypress verify"
+    "verify": "cypress verify",
+    "build": "LOCAL_PLUGIN=true SLS_DEBUG=* sls package",
+    "deploy": "LOCAL_PLUGIN=true SLS_DEBUG=* sls deploy -s dev"
   },
   "dependencies": {
     "@anttiviljami/serverless-stack-output": "0.3.1",
-    "@iopipe/iopipe": "1.16.0",
     "aws-sdk": "2.526.0",
     "middy": "0.29.0"
   },
@@ -46,7 +47,6 @@
     "npm-run-all": "4.1.5",
     "prettier": "1.18.2",
     "serverless-domain-manager": "3.3.0",
-    "serverless-iopipe-layers": "0.4.0",
     "serverless-webpack": "5.3.1",
     "webpack": "4.39.3"
   }

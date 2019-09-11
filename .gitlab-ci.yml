@@ -10,10 +10,11 @@ stages:
 
 variables:
   DEV: dev
-  STAGING: 'staging'
-  LIVE: 'live'
-  TABLE_NAME: 'cicdtable' # prefix one of the above 3 stages
-  CYPRESS_CACHE_FOLDER:  ${CI_PROJECT_DIR}/cache/Cypress
+  STAGING: "staging"
+  LIVE: "live"
+  TABLE_NAME: "cicdtable" # prefix one of the above 3 stages
+  CYPRESS_CACHE_FOLDER: ${CI_PROJECT_DIR}/cache/Cypress
+  LOCAL_PLUGIN: "true" #  temp until iopipe dep fixed
 
 cache:
   key: ${CI_COMMIT_REF_NAME}
