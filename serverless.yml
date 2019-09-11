@@ -3,9 +3,9 @@ service: cicd
 frameworkVersion: ">=1.43 <2.0.0"
 
 plugins:
-  - serverless-iopipe-layers
   - "@anttiviljami/serverless-stack-output"
   - serverless-domain-manager
+  - serverless-iopipe-layers
   - serverless-webpack
 
 package:
@@ -57,7 +57,7 @@ functions:
   # Feature one
   featureOne:
     handler: src/feature-one/handler.get
-    timeout: 2
+    timeout: 30
     memorySize: 256
     events:
       - http:
