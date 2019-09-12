@@ -9,9 +9,8 @@ plugins:
   - serverless-webpack
 
 package:
-  exclude:
-    - ./node_modules/**
-    - node_modules/**
+  individually: true
+  excludeDevDependencies: true
 
 custom:
   iopipe:
@@ -57,8 +56,8 @@ functions:
   # Feature one
   featureOne:
     handler: src/feature-one/handler.get
-    timeout: 30
-    memorySize: 256
+    timeout: 5
+    memorySize: 128
     events:
       - http:
           path: first
@@ -69,7 +68,7 @@ functions:
   put:
     handler: src/feature-two/handler.put
     timeout: 2
-    memorySize: 256
+    memorySize: 128
     events:
       - http:
           path: item
@@ -79,7 +78,7 @@ functions:
   delete:
     handler: src/feature-two/handler.delete
     timeout: 2
-    memorySize: 256
+    memorySize: 128
     events:
       - http:
           path: item
@@ -89,7 +88,7 @@ functions:
   get:
     handler: src/feature-two/handler.get
     timeout: 2
-    memorySize: 256
+    memorySize: 128
     events:
       - http:
           path: item
@@ -99,7 +98,7 @@ functions:
   scan:
     handler: src/feature-two/handler.scan
     timeout: 2
-    memorySize: 256
+    memorySize: 128
     events:
       - http:
           path: item/scan
