@@ -56,7 +56,7 @@ functions:
   # Feature one
   featureOne:
     handler: src/feature-one/handler.get
-    timeout: 5
+    timeout: 30
     memorySize: 128
     events:
       - http:
