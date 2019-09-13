@@ -23,11 +23,11 @@
     "deploy": "LOCAL_PLUGIN=true SLS_DEBUG=* sls deploy -s dev"
   },
   "dependencies": {
-    "@anttiviljami/serverless-stack-output": "0.3.1",
-    "aws-sdk": "2.527.0",
     "middy": "0.29.0"
   },
   "devDependencies": {
+    "@anttiviljami/serverless-stack-output": "0.3.1",
+    "aws-sdk": "2.527.0",
     "aws-sdk-mock": "4.5.0",
     "chai": "4.2.0",
     "cypress": "3.4.1",
