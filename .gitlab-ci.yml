@@ -51,6 +51,7 @@ scan dependencies:
     - npm install -g retire
     - cd ${CI_PROJECT_DIR}
     - yarn install --frozen-lockfile --production
+    - yarn audit
     - retire --path ${CI_PROJECT_DIR} --ignore ${CI_PROJECT_DIR}/cache
 
 SAST:
