@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@anttiviljami/serverless-stack-output": "0.3.1",
-    "aws-sdk": "2.551.0",
+    "aws-sdk": "2.814.0",
     "aws-sdk-mock": "4.5.0",
     "chai": "4.2.0",
     "cypress": "3.4.1",
